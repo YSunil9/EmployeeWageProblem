@@ -10,15 +10,25 @@ namespace EmployeeWageProblem
     {
         public const int IS_FULL_TIME = 1;
         public const int IS_PART_TIME = 2;
-        public  void ComputeEmpWage(string company, int EMP_RATE_PER_HOUR, int MONTHLY_WORKING_DAYS, int MAX_HRS_IN_MONTH)
+        public int MONTHLY_WORKING_DAYS;
+        public int MAX_HRS_IN_MONTH;
+        public int EMP_RATE_PER_HOUR;
+        public  string company;
+        int totalEmpWage;
+        public EmpWage(string company, int EMP_RATE_PER_HOUR, int MONTHLY_WORKING_DAYS, int MAX_HRS_IN_MONTH)
+        {
+            this.company = company;
+            this.EMP_RATE_PER_HOUR = EMP_RATE_PER_HOUR;
+            this.MONTHLY_WORKING_DAYS = MONTHLY_WORKING_DAYS;
+            this.MAX_HRS_IN_MONTH = MAX_HRS_IN_MONTH;
+        }
+        public  void ComputeEmpWage()
         {
             Console.WriteLine("Welcome To Employee Wage Problem\n");
-            int EmpWage = 0;
-            int totalEmpWage = 0;
             int EmpHrs = 0;
             int totalEmpHrs = 0;
             int TotalWorkingDays = 0;
-            while (totalEmpHrs <= MAX_HRS_IN_MONTH && TotalWorkingDays < MONTHLY_WORKING_DAYS)
+            while (totalEmpHrs <= this.MAX_HRS_IN_MONTH && TotalWorkingDays < this.MONTHLY_WORKING_DAYS)
             {
                 TotalWorkingDays++;
                 {
@@ -44,8 +54,11 @@ namespace EmployeeWageProblem
                 }
             }
             totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
-            Console.WriteLine("\ncompany name : " + company + " Total Emp Wage : " + totalEmpWage);
-        
+            Console.WriteLine("\ncompany name : " + company + " Total Emp Wage : " + totalEmpWage);       
+        }
+        public String ToString()
+        {
+            return "Total EmpWage For Company :" + this.company + " is:" + this.totalEmpWage;
         }
     }
 }
